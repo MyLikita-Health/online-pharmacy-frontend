@@ -194,4 +194,22 @@
 .delivered-text span {
     color: #cf711f;
     font-weight: 700;
-}
+    }
+    .input{
+        padding: 20px;
+        border-left: none;
+        border-right: none;
+    }
+    .input:focus{
+        border:none !important;
+        /* background-color: green; */
+
+    }
+    .input:active{
+        border: none !important;
+    }
+
+    .container{
+        margin-left:20px;
+        /* margin-right:20px; */
+    }

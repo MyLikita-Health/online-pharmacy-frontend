@@ -1,6 +1,6 @@
 // import { useDispatch } from "react-redux";
 import { useRoutes } from "react-router-dom";
-import { logout } from "../redux/actions/auth";
+// import { logout } from "../redux/actions/auth";
 import Home from "../view/landing/HomePage";
 
 function AppNavigation() {

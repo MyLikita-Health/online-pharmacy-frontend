@@ -1,0 +1,19 @@
+
+.input{
+    padding: 20px;
+    border-left: none;
+    border-right: none;
+}
+.input:focus{
+    border:none !important;
+    background-color: blue;
+
+}
+.input:active{
+    border: none !important;
+}
+
+.container{
+    margin-left:20px;
+    /* margin-right:20px; */
+}
