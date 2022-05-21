@@ -166,7 +166,7 @@ export function initUser(history = null, callback = (f) => f) {
           } else {
             callback();
             localStorage.removeItem("@@__token");
-            history("/login");
+            history("/");
             console.log("Token expired");
             dispatch({ type: LOGOUT });
           }
@@ -174,7 +174,7 @@ export function initUser(history = null, callback = (f) => f) {
         .catch((err) => {
           callback();
           localStorage.removeItem("@@__token");
-          history("/login");
+          history("/");
           console.log("Token expired");
           dispatch({ type: LOGOUT });
         });

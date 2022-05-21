@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #202124;
+}
+
+.pharmacy {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+
+.pharmacy--heading {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.15rem;
+}
+
+.pharmacy--searchbar {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.pharmacy--search {
+  display: flex;
+  z-index: 3;
+  height: 44px;
+  background: #fff;
+  border: 1px solid #dfe1e5;
+  box-shadow: none;
+  border-radius: 24px;
+  margin: 0 auto;
+  width: 63.8rem;
+  /* width: auto; */
+  max-width: 58.4rem;
+  width: fit-content;
+}
+
+.pharmacy--searchbar__alignment {
+  flex: 1;
+  display: flex;
+  padding: 5px 8px 0 14px;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  padding-right: 13px;
+  margin-top: -5px;
+}
+
+.actions {
+  flex: 1 0 auto;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 0 8px;
+  /* width: 24px; */
+  line-height: 44px;
+  font-size: 2rem;
+  gap: 8px;
+}
+
+.searchbox {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.searchbox__alignment {
+  color: transparent;
+  flex: 100%;
+  white-space: pre;
+  height: 34px;
+  font-size: 16px;
+}
+
+.searchtext {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.87);
+  word-wrap: break-word;
+  outline: none;
+  display: flex;
+  flex: 100%;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: 0px;
+  height: 34px;
+  font-size: 16px;
+  width: 40rem;
+}
+
+button {
+  background-color: #f8f9fa;
+  border: 1px solid #f8f9fa;
+  border-radius: 4px;
+  color: #3c4043;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  margin: 31px 4px;
+  padding: 0 16px;
+  line-height: 27px;
+  height: 36px;
+  min-width: 54px;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+button:hover {
+  box-shadow: 0 1px 1px #0000001a;
+  background-color: #f8f9fa;
+  border: 1px solid #dadce0;
+  color: #202124;
+}
+
+@media (max-width: 44em) {
+  .pharmacy--search {
+    /* max-width: 30rem; */
+    width: fit-content;
+  }
+  .searchtext {
+    width: 20rem;
+  }
+  .pharmacy--heading {
+    font-size: 3.2rem;
+  }
+}
