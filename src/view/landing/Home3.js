@@ -1,6 +1,5 @@
 import React from "react";
 import { ProgressBar } from "react-bootstrap";
-import { Button } from "reactstrap";
 import  './index.css'
 
 export default function Home3(){

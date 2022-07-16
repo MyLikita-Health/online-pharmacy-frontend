@@ -28,32 +28,31 @@ export default function Home() {
               </div>
               <div class="searchbox">
                 <div class="searchbox__alignment">
-              <Typeahead
-                    id="basic-typeahead-single"
-                    labelKey="itemName"
-                    onInputChange={setSearch}
-                    onChange={(e) => {
-                      setSearch(e)
-                      //  navigate(`/home/re`sult?item_name=${search[0].itemName}`)
-                    }}
-                    style={{border:"none",outline:"none"}}
-                    options={letterList}
-                    placeholder="Choose a state..."
-                    selected={search}
-                    className="searchtext"
-                    maxlength="2048"
-                    aria-autocomplete="both"
-                    aria-haspopup="false"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autofocus=""
-                    role="combobox"
-                    spellcheck="false"
-                    title="Search"
-                    value={search}
-                    aria-label="Search"
-              />
+                <Typeahead
+          id="basic-typeahead-single"
+          labelKey="itemName"
+          onInputChange={setSearch}
+          onChange={(e) => {
+            setSearch(e)
+            //  navigate(`/home/re`sult?item_name=${search[0].itemName}`)
+          }}
+          options={letterList}
+          placeholder="Choose a state..."
+          selected={search}
+          className="searchtext"
+          maxlength="2048"
+          aria-autocomplete="both"
+          aria-haspopup="false"
+          autocapitalize="off"
+          autocomplete="off"
+          autocorrect="off"
+          autofocus=""
+          role="combobox"
+          spellcheck="false"
+          title="Search"
+          value={search}
+          aria-label="Search"
+        />
                 </div>
               </div>
               <div class="actions">
@@ -70,7 +69,12 @@ export default function Home() {
             </div>
           </div>
           <div class="buttons">
-            <button type="submit">Pharm Search</button>
+            <button 
+            type="submit"
+            onClick={e => {
+              e.preventDefault();
+              navigate('/search')}}
+            >Pharm Search</button>
             <button>I'm Feeling Lucky</button>
           </div>
         </form>
