@@ -6,11 +6,18 @@ import "./css/style.css";
 import { Camera, Mic, Search, Upload } from "react-feather";
 import "./search.css";
 import { useState } from "react";
+import Home3 from "./Home3";
+import { Typeahead } from "react-bootstrap-typeahead";
+import { letterList } from "./component";
+import {useNavigate} from 'react-router-dom';
 
 export default function Home() {
   const [search, setSearch] =useState('')
+  const navigate = useNavigate()
+
   return (
     <>
+    {JSON.stringify(search)}
       <main class="pharmacy">
         <div class="pharmacy--heading">Online Pharmacy</div>
         <form class="pharmacy--searchbar">
@@ -21,11 +28,19 @@ export default function Home() {
               </div>
               <div class="searchbox">
                 <div class="searchbox__alignment">
-                  <input
-                    id="search"
-                    class="searchtext"
-                    type="text"
-                    name="search"
+              <Typeahead
+                    id="basic-typeahead-single"
+                    labelKey="itemName"
+                    onInputChange={setSearch}
+                    onChange={(e) => {
+                      setSearch(e)
+                      //  navigate(`/home/re`sult?item_name=${search[0].itemName}`)
+                    }}
+                    style={{border:"none",outline:"none"}}
+                    options={letterList}
+                    placeholder="Choose a state..."
+                    selected={search}
+                    className="searchtext"
                     maxlength="2048"
                     aria-autocomplete="both"
                     aria-haspopup="false"
@@ -38,8 +53,7 @@ export default function Home() {
                     title="Search"
                     value={search}
                     aria-label="Search"
-                    onChange={e => setSearch(e.target.value)}
-                  />
+              />
                 </div>
               </div>
               <div class="actions">
@@ -61,6 +75,9 @@ export default function Home() {
           </div>
         </form>
       </main>
+      <div>
+          <Home3 />
+        </div>
     </>
   );
 }
