@@ -1,6 +1,6 @@
 
 // import { apiURL } from "./index";
-import { apiURL } from "../action";
+import { apiURL } from ".";
 import { GET_FACILITY_INFO, GETTING_FACILITY_INFO } from "./actionTypes";
 import { _fetchApi } from "./api";
 

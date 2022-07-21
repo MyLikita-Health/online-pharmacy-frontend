@@ -1,25 +1,24 @@
-*{
-    margin: 0;
-    padding: 0;
-    align-items: baseline;
-    justify-content: baseline;
-    text-align: left;
+* {
+  margin: 0;
+  padding: 0;
+  align-items: baseline;
+  justify-content: baseline;
+  text-align: left;
 }
-.card{
-    margin-bottom: 20px;
-    border: none;
+.card {
+  margin-bottom: 20px;
+  border: none;
 }
-.ahmad{
-    /* display: flex;
+.ahmad {
+  /* display: flex;
     flex-direction: column; */
-    margin-left: 100px;
-    justify-content: baseline;
-    font-size: 20px;
-    padding: 0;
-    
+  margin-left: 100px;
+  justify-content: baseline;
+  font-size: 20px;
+  padding: 0;
 }
-p{
-    margin-top: -10px;
+p {
+  margin-top: -10px;
 }
 /* .underline{
     border: 1px solid gray;
@@ -27,24 +26,28 @@ p{
     
     margin-bottom: 10px;
 } */
-.med{
-    text-decoration: none;
-    margin: 8px;
+.med {
+  text-decoration: none;
+  margin: 8px;
 }
-.button ,.button1{
-    font-size: 15px;
-    border-radius: 8px;
-    margin-left: 5px;
-    margin-top: 8px;
-    margin-right: 10px;
+.button,
+.button1 {
+  font-size: 15px;
+  border-radius: 8px;
+  margin-left: 5px;
+  margin-top: 8px;
+  margin-right: 10px;
 }
-.button1{
-    width: 100px;
+.button1 {
+  width: 100px;
 }
-.result{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 10px;
+.result {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+.shadow :hover {
+  box-shadow: inset;
 }

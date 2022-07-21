@@ -13,7 +13,7 @@ import {
 } from "./types";
 import store from "../store";
 import { getFacilityInfo } from "./facility";
-import { apiURL } from "../action";
+import { apiURL } from ".";
 import { _fetchApi, _postApi } from "./api";
 import { generateAvatar } from "../../helpers";
 

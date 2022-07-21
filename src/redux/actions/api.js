@@ -1,4 +1,4 @@
-import { apiURL } from "../action";
+import { apiURL } from ".";
 import store from "../store";
 
 /**

@@ -3,16 +3,17 @@ import "./nav.css";
 // JavaScript plugin that hides or shows a component based on your scroll
 // import Headroom from "headroom.js";
 // reactstrap components
-import { Navbar,NavbarToggler } from "reactstrap";
+import { Navbar, NavbarToggler, Button } from "reactstrap";
 // import { generalRoot } from 'views/app/routes/helpers'
-import CustomButton from "../UI/CustomButton";
 // import logo from '../../assets/images/logo.png'
 import NavItems from "./NavItems";
+import Home from "../view/landing/HomePage";
+import { useLocation } from "react-router-dom";
 // import { logout } from 'redux/actions/auth'
 
 const MainNavbar = () => {
   // const history = (f) => f
-  // const location = useLocation()
+  const location = useLocation()
   // const logout = () => {}
   // const route = ''
   // // location.pathname.includes(generalRoot)
@@ -26,12 +27,13 @@ const MainNavbar = () => {
   //     }),
   //   )
   // }
+  const landingPage = location.pathname==="/"
   return (
     <Navbar
       className="navbar-main mb-2 py-0"
       expand="md"
       fixed="top"
-      style={{ maxHeight: 50, backgroundColor: "#0069D9" }}
+      style={{ maxHeight: 50, backgroundColor: "#f2f2f2" }}
     >
       {/* <Container> */}
       {/* <NavbarBrand className="mr-lg-5 " to="/" tag={Link}>
@@ -42,7 +44,8 @@ const MainNavbar = () => {
       <div className="text-center">
         <h1 className="text-white text-center  ml-lg-5">{""}</h1>
       </div>
-      <NavItems />
+     { !landingPage && <Home display={true} />}
+      {/* <NavItems /> */}
 
       <NavbarToggler onClick={() => {}} />
       {/* <Collapse
@@ -73,10 +76,10 @@ const MainNavbar = () => {
         </div>
       </Collapse> */}
       <div className="">
-        <CustomButton className="" color="danger" onClick={() => {}}>
+        <Button className="" color="danger" onClick={() => {}}>
           {/* <FaPowerOff size="20px" style={{ marginRight: '10px' }} /> */}
           (icon) logout
-        </CustomButton>
+        </Button>
       </div>
       {/* </Container> */}
     </Navbar>

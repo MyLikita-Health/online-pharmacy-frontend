@@ -1,43 +1,113 @@
-import React from 'react'
-import { Col, Row } from 'reactstrap'
-import BackButton from '../../component/BackButton';
-import './seacrch.css'
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import { ShoppingCart } from "react-feather";
+// import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  Card,
+  CardBody,
+  CardSubtitle,
+  CardText,
+  CardTitle,
+  Col,
+  Row,
+  Button,
+} from "reactstrap";
+// import BackButton from "../../component/BackButton";
+import CustomScrollbar from "../../component/CustomScrollbar";
+import { formatNumber } from "../../helpers";
+import useQuery from "../../helpers/useQuery";
+// import { CARTLIST } from "../../redux/actions/types";
+import { letterList } from "./component";
+import "./seacrch.css";
 
+export function ItemCard({ item, display = false }) {
+  const navigate = useNavigate();
+  return (
+    <>
+      <Card style={{ height: "13em" }} className="shadow">
+        <img
+          alt="Card image"
+          src="https://picsum.photos/300/200"
+          className="img-fluid"
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate(`/store?storeName=${item.store_name}`)}
+        />
+        <CardBody>
+          <Row>
+            <Col md={10}>
+              <CardTitle tag="h5">{item.itemName}</CardTitle>
+              <CardSubtitle className="mb-2 text-muted d-flex justify-content-between" tag="h6">
+                Price : ₦{formatNumber(item.price)}{" "}
+                {display && (
+                  <div className="d-flex">
+                    <div className="m-2">
+                      <ShoppingCart size={19}/> 
+                    </div>
+                    <div lassName="m-2">Save</div>
+                  </div>
+                )}
+              </CardSubtitle>
+              <CardText
+                tag="h5"
+                onClick={() => navigate(`/store?storeName=${item.store_name}`)}
+                style={{ cursor: "pointer" }}
+                className="text-primary"
+              >
+                Available at : {item.store_name}
+              </CardText>
+            </Col>
+            <Col></Col>
+          </Row>
+        </CardBody>
+      </Card>
+    </>
+  );
+}
 export default function Search() {
-  const drugList = [{ drug_name: 'Paracetamol', store_name: 'Ahmad and Sons Pharmacy', price: 300},
-  { drug_name: 'Boska', store_name: 'Alihsan and Sons pharmacutical NIG LTD ', price: 290.98},
-  { drug_name: 'Panadol Extra', store_name: 'Safiya store and Pharmacy', price: 310.50},
-  { drug_name: 'Sudrex', store_name: 'Alihsan pharmacutical NIG LTD', price: 280.999},
-  { drug_name: 'Diclofenac', store_name: 'Ahmad and Sons Pharmacy', price: 290.98},
-  { drug_name: 'Relief', store_name: 'Relief Pharmacy', price: 290.9870},]
-
+  const query = useQuery();
+  const item_name = query.get("item_name");
+  const drugList = letterList.filter((i) => i.itemName === item_name);
+  // const [select, setSelect] = useState([]);
+  // const dispatch = useDispatch();
+  // const addToCart = (item) => {
+  //   dispatch({
+  //     type: CARTLIST,
+  //     payload: item,
+  //   });
+  // };
   return (
     <div>
-      <BackButton />
-      <h1 className="result">Your Search Result</h1>
       {/* <div className='underline'></div> */}
-      <Row>
-        <Col md={6}>
+      <div className="d-flex justify-content-between">
+        {/* <BackButton color="primary" /> */}
+      </div>
+      <Row className="p-0 m-0">
+        {/* {JSON.stringify(item_name)} */}
+        <Col md={2}></Col>
+        <Col md={8}>
+          <center>
+            <h1 className="result">Your Search Result</h1>
+          </center>
+
           <div className="ahmad">
-            {drugList.map((item, i) => (
-              <div style={{ marginBottom: 10 }} key={i}>
-                <a href="#" className="med">
-                  {item.drug_name}
-                </a>
-                <p style={{ marginTop: -5 }}>
-                  Available at : {item.store_name}{" "}
-                </p>
-                <p style={{ marginTop: -12 }}>Price : ₦{item.price}</p>
-                <div>
-                  <button className="button">Add to Cart</button>
-                  <button className="button1"> Save</button>
-                </div>
-              </div>
-            ))}
+            <CustomScrollbar height="75vh">
+              <Row className="p-0 m-0">
+                {drugList.map((item, i) => (
+                  <Col md={4}>
+                    <ItemCard item={item} />
+                  </Col>
+                ))}
+              </Row>
+            </CustomScrollbar>
           </div>
         </Col>
-        <Col md={6}></Col>
+        <Col md={2}></Col>
       </Row>
+      <center>
+        <h1 className="result">You make also like</h1>
+      </center>
     </div>
   );
 }

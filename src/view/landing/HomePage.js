@@ -11,23 +11,23 @@ import { Typeahead } from "react-bootstrap-typeahead";
 import { letterList } from "./component";
 import { useNavigate } from "react-router-dom";
 
-export default function Home() {
+export default function Home({ display = false }) {
   const [itemName, setItemName] = useState("");
   const navigate = useNavigate();
 
   return (
     <>
       {/* {JSON.stringify(itemName)} */}
-      <main class="pharmacy">
-        <div class="pharmacy--heading">Online Pharmacy</div>
-        <form class="pharmacy--searchbar">
-          <div class="pharmacy--search">
-            <div class="pharmacy--searchbar__alignment">
-              <div class="search">
+      <main className="pharmacy">
+        {!display && <div className="pharmacy--heading">Online Pharmacy</div>}
+        <form className="pharmacy--searchbar">
+          <div className="pharmacy--search">
+            <div className="pharmacy--searchbar__alignment">
+              <div className="search">
                 <Search />
               </div>
-              <div class="searchbox">
-                <div class="searchbox__alignment">
+              <div className="searchbox">
+                <div className="searchbox__alignment">
                   <Typeahead
                     id="basic-typeahead-single"
                     labelKey="itemName"
@@ -70,31 +70,33 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <div class="actions">
-                <div class="mic">
-                  <Mic />
+              <div className="actions">
+                <div className="mic">
+                  <Mic style={{ marginBottom: 10 }} />
                 </div>
-                {/* <div class="upload">
+                {/* <div className="upload">
                  <Upload />
                 </div> */}
-                <div class="camera">
-                  <Camera />
+                <div className="camera">
+                  <Camera style={{ marginBottom: 10 }} />
                 </div>
               </div>
             </div>
           </div>
-          <div class="buttons">
-            <button
-              type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate(`/search?item_name=${itemName}`);
-              }}
-            >
-              Pharm Search
-            </button>
-            <button>I'm Feeling Lucky</button>
-          </div>
+          {!display && (
+            <div className="buttons">
+              <button
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(`/search?item_name=${itemName}`);
+                }}
+              >
+                Pharm Search
+              </button>
+              <button>I'm Feeling Lucky</button>
+            </div>
+          )}
         </form>
       </main>
       {/* <div>

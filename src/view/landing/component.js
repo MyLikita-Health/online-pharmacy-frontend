@@ -1,46 +1,86 @@
-export const letterList =[
-    {
-        itemName: 'Rice',
-        id: 1
-    },
-    {
-        itemName: 'Beans',
-        id: 2
-    },
-    {
-        itemName: 'Green Beans',
-        id: 3
-    },
-    {
-        itemName: 'Paste',
-        id: 4
-    },
-    {
-        itemName: 'Gari',
-        id: 5
-    },
-    {
-        itemName: 'Mult',
-        id: 6
-    },
-    {
-        itemName: 'Fish',
-        id: 7
-    },
-    {
-        itemName: 'Meat',
-        id: 8
-    },
-    {
-        itemName: 'Flour',
-        id: 9
-    },
-    {
-        itemName: 'Corn',
-        id: 10
-    },
-    {
-        itemName: 'Millet',
-        id: 11
-    }
-] 
+export const letterList = [
+  {
+    itemName: "Paracetamol",
+    id: 1,
+    store_name: "Ahmad and Sons Pharmacy",
+    price: 300,
+  },
+  {
+    itemName: "Boska",
+    id: 2,
+    store_name: "Alihsan and Sons pharmacutical NIG LTD ",
+    price: 290.98,
+  },
+  {
+    itemName: "Panadol Extra",
+    id: 3,
+    store_name: "Safiya store and Pharmacy",
+    price: 310.5,
+  },
+  {
+    itemName: "Sudrex",
+    id: 4,
+    store_name: "Alihsan pharmacutical NIG LTD",
+    price: 280.999,
+  },
+  {
+    itemName: "Diclofenac",
+    id: 5,
+    store_name: "Ahmad and Sons Pharmacy",
+    price: 290.98,
+  },
+  {
+    itemName: "Paracetamol",
+    store_name: "Relief Pharmacy",
+    price: 290.987,
+    id: 6,
+  },
+  {
+    itemName: "Pain Relieve",
+    id: 7,
+    store_name: "Alihsan pharmacutical NIG LTD",
+    price: 2321.999,
+  },
+  {
+    itemName: "Perex",
+    id: 8,
+    store_name: "Alihsan pharmacutical NIG LTD",
+    price: 2321.999,
+  },
+  {
+    itemName: "Panadol",
+    id: 9,
+    store_name: "Alihsan pharmacutical NIG LTD",
+    price: 280.999,
+  },
+  {
+    itemName: "Condom",
+    id: 10,
+    store_name: "Ahmad and Sons Pharmacy",
+    price: 300,
+  },
+  {
+    itemName: "Sebtrin",
+    id: 11,
+    store_name: "Safiya store and Pharmacy",
+    price: 310.5,
+  },
+  {
+    itemName: "Drug 1",
+    id: 12,
+    store_name: "Ahmad and Sons Pharmacy",
+    price: 400,
+  },
+  {
+    itemName: "Drug 2",
+    id: 13,
+    store_name: "Ahmad and Sons Pharmacy",
+    price: 300,
+  },
+  {
+    itemName: "Drug 3",
+    id: 14,
+    store_name: "Ahmad and Sons Pharmacy",
+    price: 500,
+  },
+];
