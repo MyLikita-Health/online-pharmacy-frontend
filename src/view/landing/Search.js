@@ -12,7 +12,6 @@ import {
   CardTitle,
   Col,
   Row,
-  Button,
 } from "reactstrap";
 // import BackButton from "../../component/BackButton";
 import CustomScrollbar from "../../component/CustomScrollbar";
@@ -38,12 +37,15 @@ export function ItemCard({ item, display = false }) {
           <Row>
             <Col md={10}>
               <CardTitle tag="h5">{item.itemName}</CardTitle>
-              <CardSubtitle className="mb-2 text-muted d-flex justify-content-between" tag="h6">
+              <CardSubtitle
+                className="mb-2 text-muted d-flex justify-content-between"
+                tag="h6"
+              >
                 Price : ₦{formatNumber(item.price)}{" "}
                 {display && (
                   <div className="d-flex">
                     <div className="m-2">
-                      <ShoppingCart size={19}/> 
+                      <ShoppingCart size={19} />
                     </div>
                     <div lassName="m-2">Save</div>
                   </div>
@@ -85,8 +87,8 @@ export default function Search() {
       </div>
       <Row className="p-0 m-0">
         {/* {JSON.stringify(item_name)} */}
-        <Col md={2}></Col>
-        <Col md={8}>
+        <Col md={1}></Col>
+        <Col md={10}>
           <center>
             <h1 className="result">Your Search Result</h1>
           </center>
@@ -95,7 +97,7 @@ export default function Search() {
             <CustomScrollbar height="75vh">
               <Row className="p-0 m-0">
                 {drugList.map((item, i) => (
-                  <Col md={4}>
+                  <Col md={3}>
                     <ItemCard item={item} />
                   </Col>
                 ))}
@@ -103,7 +105,7 @@ export default function Search() {
             </CustomScrollbar>
           </div>
         </Col>
-        <Col md={2}></Col>
+        <Col md={1}></Col>
       </Row>
       <center>
         <h1 className="result">You make also like</h1>

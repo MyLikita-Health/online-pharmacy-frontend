@@ -17,8 +17,8 @@ export default function ShopList() {
     <div>
       <Row className="p-0 m-0">
         {/* {JSON.stringify(item_name)} */}
-        <Col md={2}></Col>
-        <Col md={8}>
+        <Col md={1}></Col>
+        <Col md={10}>
           <center>
             <h1 className="result">{store_name}</h1>
           </center>
@@ -27,7 +27,7 @@ export default function ShopList() {
             <CustomScrollbar height="75vh">
               <Row className="p-0 m-0">
                 {shoplist.map((item, i) => (
-                  <Col md={4}>
+                  <Col md={3}>
                     <ItemCard item={item} display={true} />
                   </Col>
                 ))}
@@ -35,7 +35,7 @@ export default function ShopList() {
             </CustomScrollbar>
           </div>
         </Col>
-        <Col md={2}></Col>
+        <Col md={1}></Col>
       </Row>
       <center>
         <h1 className="result">You make also like</h1>

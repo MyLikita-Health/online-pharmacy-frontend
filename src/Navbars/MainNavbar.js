@@ -6,14 +6,16 @@ import "./nav.css";
 import { Navbar, NavbarToggler, Button } from "reactstrap";
 // import { generalRoot } from 'views/app/routes/helpers'
 // import logo from '../../assets/images/logo.png'
-import NavItems from "./NavItems";
+// import NavItems from "./NavItems";
 import Home from "../view/landing/HomePage";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { LogOut, ShoppingCart } from "react-feather";
 // import { logout } from 'redux/actions/auth'
 
 const MainNavbar = () => {
   // const history = (f) => f
-  const location = useLocation()
+  const location = useLocation();
+  const navigate = useNavigate();
   // const logout = () => {}
   // const route = ''
   // // location.pathname.includes(generalRoot)
@@ -27,7 +29,7 @@ const MainNavbar = () => {
   //     }),
   //   )
   // }
-  const landingPage = location.pathname==="/"
+  const landingPage = location.pathname === "/";
   return (
     <Navbar
       className="navbar-main mb-2 py-0"
@@ -44,7 +46,7 @@ const MainNavbar = () => {
       <div className="text-center">
         <h1 className="text-white text-center  ml-lg-5">{""}</h1>
       </div>
-     { !landingPage && <Home display={true} />}
+      {!landingPage && <Home display={true} />}
       {/* <NavItems /> */}
 
       <NavbarToggler onClick={() => {}} />
@@ -75,10 +77,20 @@ const MainNavbar = () => {
           </Row>
         </div>
       </Collapse> */}
+
       <div className="">
+        {" "}
+        <Button
+          color="light"
+          className="m-1"
+          onClick={() => navigate("/shopping-cart")}
+        >
+          <ShoppingCart />
+        </Button>
         <Button className="" color="danger" onClick={() => {}}>
           {/* <FaPowerOff size="20px" style={{ marginRight: '10px' }} /> */}
-          (icon) logout
+          <LogOut />
+          logout
         </Button>
       </div>
       {/* </Container> */}

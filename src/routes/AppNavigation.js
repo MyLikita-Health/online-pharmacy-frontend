@@ -4,6 +4,7 @@ import { useRoutes } from "react-router-dom";
 import Home from "../view/landing/HomePage";
 import Search from "../view/landing/Search";
 import ShopList from "../view/landing/ShopList";
+import ShoppingCart from "../view/landing/ShoppingCart";
 import AuthenticatedContainer from "./AuthenticatedContainer";
 
 function AppNavigation() {
@@ -16,6 +17,7 @@ function AppNavigation() {
         { index: true, element: <Home /> },
         { path: "/search", element: <Search /> },
         { path: "/store", element: <ShopList /> },
+        { path: "/shopping-cart", element: <ShoppingCart /> },
       ],
     },
   ]);
