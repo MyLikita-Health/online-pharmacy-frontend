@@ -2,6 +2,7 @@
 import { useRoutes } from "react-router-dom";
 // import { logout } from "../redux/actions/auth";
 import Home from "../view/landing/HomePage";
+import ParmacyRegistrition from "../view/landing/js/ParmacyRegistrition";
 import Search from "../view/landing/Search";
 import ShopList from "../view/landing/ShopList";
 import ShoppingCart from "../view/landing/ShoppingCart";
@@ -18,6 +19,7 @@ function AppNavigation() {
         { path: "/search", element: <Search /> },
         { path: "/store", element: <ShopList /> },
         { path: "/shopping-cart", element: <ShoppingCart /> },
+        { path: "/parmacy-regirition", element: <ParmacyRegistrition/> },
       ],
     },
   ]);
