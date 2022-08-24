@@ -1,5 +1,7 @@
 // import { useDispatch } from "react-redux";
 import { useRoutes } from "react-router-dom";
+import Card from "../view/landing/cart/Card";
+import Cart from "../view/landing/cart/Cart";
 // import { logout } from "../redux/actions/auth";
 import Home from "../view/landing/HomePage";
 import Search from "../view/landing/Search";
@@ -18,6 +20,9 @@ function AppNavigation() {
         { path: "/search", element: <Search /> },
         { path: "/store", element: <ShopList /> },
         { path: "/shopping-cart", element: <ShoppingCart /> },
+        {path:"/new-cart",element:<Cart />},
+        {path:"/card",element:<Card />}
+
       ],
     },
   ]);

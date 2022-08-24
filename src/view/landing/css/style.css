@@ -12,14 +12,14 @@
     align-items: center;
     background-color: var(--primary);
     /* Because we want header to be sticky later */
-    height: 4.8rem;
+    /* height: 4.8rem; */
     padding: 0 4.8rem;
 }
 
 .header:hover {
     background-color: white;
     color: var(--primary);
-    transition: color 0.4s ease 0s, background-color 0.4s ease 0s, border 0.4s ease 0s, width 0.4s cubic-bezier(0.09, 1, 0.205, 1) 0s;
+    /* transition: color 0.4s ease 0s, background-color 0.4s ease 0s, border 0.4s ease 0s, width 0.4s cubic-bezier(0.09, 1, 0.205, 1) 0s; */
 }
 
 .logo {

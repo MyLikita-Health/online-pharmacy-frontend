@@ -5,21 +5,21 @@
   justify-content: baseline;
   text-align: left;
 }
-.card {
+/* .card {
   margin-bottom: 20px;
   border: none;
-}
+} */
 .ahmad {
   /* display: flex;
     flex-direction: column; */
   margin-left: 100px;
   justify-content: baseline;
-  font-size: 20px;
+  font-size: 10px;
   padding: 0;
 }
-p {
+/* p {
   margin-top: -10px;
-}
+} */
 /* .underline{
     border: 1px solid gray;
     width: 100%;

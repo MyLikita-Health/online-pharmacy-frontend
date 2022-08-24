@@ -58,7 +58,7 @@ export default function Home({ display = false }) {
                     title="Search"
                     aria-label="Search"
                     inputProps={{
-                      className: "searchtext",
+                      // className: "searchtext",
                       style: {
                         border: "0px",
                         outline: "0px",

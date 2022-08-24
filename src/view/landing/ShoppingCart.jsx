@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card, CardBody, CardHeader, Col, Row } from "reactstrap";
 import "./shoppingCart.css";
 
 const ShoppingCart = () => {
@@ -21,7 +22,7 @@ const ShoppingCart = () => {
       id: 3,
       image: "http://dummyimage.com/440x620.png/cc0000/ffffff",
       name: "Veal - Jambu",
-      price: 135,
+      price: 115,
       qty: 1,
     },
     {
@@ -103,8 +104,15 @@ const ShoppingCart = () => {
   );
 
   return (
-    <div className="row justify-content-center m-0">
-      <div className="col-md-8 mt-5 mb-5">
+    <Card className="mt-5">
+      <CardHeader>Shopping Cart</CardHeader>
+      <CardBody>
+        <Row>
+          <Col md={1}></Col>
+          <Col md={10}>
+            {JSON.stringify()}
+          <div className="row justify-content-center m-0">
+      <div className="col-md-8 mb-5">
         <div className="card">
           <div className="card-header bg-dark p-3">
             <div className="card-header-flex">
@@ -233,6 +241,12 @@ const ShoppingCart = () => {
         </div>
       </div>
     </div>
+          </Col>
+          <Col md={1}></Col>
+        </Row>
+      </CardBody>
+    </Card>
+  
   );
 };
 

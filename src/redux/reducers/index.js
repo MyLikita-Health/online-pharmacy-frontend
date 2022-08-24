@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import { loadingBarReducer } from 'react-redux-loading-bar';
-import appReducer from './app';
-import authReducer from './auth';
+import CartReducer from "./cartreducer"
 const rootReducer = combineReducers({
-  app: appReducer,
-  auth: authReducer,
+  cart:CartReducer,
   loadingBar: loadingBarReducer,
 });
 export default rootReducer;

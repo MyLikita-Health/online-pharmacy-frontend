@@ -27,9 +27,9 @@ export default function ShopList() {
             <CustomScrollbar height="75vh">
               <Row className="p-0 m-0">
                 {shoplist.map((item, i) => (
-                  <Col md={3}>
+                 
                     <ItemCard item={item} display={true} />
-                  </Col>
+                 
                 ))}
               </Row>
             </CustomScrollbar>

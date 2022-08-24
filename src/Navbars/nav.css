@@ -1,13 +1,301 @@
-/* .active {
-    background-color: red;
+:root {
+    --primaryColor: rgb(255, 205, 41);
+    --secondaryColor: rgb(243, 112, 33);
+
+}
+
+nav ul {
+    list-style: none;
+    /* overflow: hidden; */
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+}
+
+nav li {
+    display: inline;
+    /* padding-right:20px; */
+    color: rgb(99, 99, 99);
+    float: left;
+}
+
+.nav-row {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.05);
+    /* position: sticky; */
+}
+
+
+
+/* .col1 {
+    margin-left: 50px;
 } */
-.logo{
-    width: 150px;
+
+
+
+.col2 input {
+    width: 400px;
+    outline: none;
     height: 40px;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 50px;
+}
+
+.search {
+    position: relative;
+    margin: 0 auto;
+}
+
+.search .icon {
+    position: absolute;
+    top: 20px;
+    left: 15%;
+    font-size: 15px;
+    color: rgb(194, 194, 194);
+}
+
+/* 
+.cart-div{
+    position: relative;
+    margin: 0 auto;
+} */
+.cart-count {
+    position: absolute;
+    /* top: -10px;
+    left: 30%; */
+    background-color: var(--secondaryColor);
+    padding: 2px;
+    color: white;
+    border-radius: 5px;
+    width: 20px;
+    margin-left: 5px;
+}
+
+.col2 button {
+    background-color: rgb(243, 112, 33);
+    color: white;
+    border: none;
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.05);
+    font-size: 12px;
+    font-weight: bold;
+    width: 70px;
+}
+
+.col2 button:hover {
+    background-color: rgb(212, 106, 40);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.d {
+    display: inline-block;
+}
+
+.btn {
+    font-size: 14px;
+    background-color: white;
+    border: none;
+    color: rgb(99, 99, 99);
+}
+
+.shop-main-card {
+    border: none;
+    padding: 15px;
+    /* z-index: -1; */
+    margin-top: 900px;
+}
+
+.item-card {
+    /* height: 42vh; */
+    border: 1px solid rgb(245, 245, 245);
+}
+
+.item-card, .item-card-body, .item-card-footer {
+    background-color: white;
+}
+
+.item-card-body, .item-card-footer {
+    border: none;
+}
+
+.item-card-body {
+    height: 33vh;
+}
+
+.item-price {
+    font-weight: bold;
+}
+
+.item-price, .item-name {
     margin: 0;
     padding: 0;
 }
-.nav-item:active {background-color: aqua;}
-.nav-item:hover {background-color: rgb(7, 70, 70); color:#FFFFFF !important}
-.nav-item {list-style: none; border-radius:20;}
-.top-bar{padding: 0; margin: 0; }
+
+.item-name {
+    font-size: 12px;
+}
+
+.shop-card-title {
+    /* font-weight: bold; */
+    font-size: 22px;
+}
+
+.item-card:hover {
+    cursor: pointer;
+    /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.05); */
+    box-shadow: 0 5px 10px rgba(94, 94, 94, 0.19), 0 3px 3px rgba(107, 107, 107, 0.23);
+    transition: 400ms;
+    /* background-color: rgb(241, 240, 240); */
+}
+
+.add {
+    background-color: var(--secondaryColor);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.item-quantity {
+    display: inline-block;
+    margin: 0 10px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.q-div {
+    margin-top: 10px;
+}
+
+.plus, .minus {
+    background-color: var(--secondaryColor);
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    width: 25%;
+    font-weight: bold;
+}
+
+.plus {
+    float: left;
+}
+
+.minus {
+    float: right;
+}
+
+.cart-left-card, .cart-right-card {
+    border: none;
+}
+
+.trash {
+    float: right;
+    padding: 10px;
+}
+
+.trash:hover {
+    background-color: var(--secondaryColor);
+    color: white;
+    border-radius: 50px;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.container1 {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    /* font-size: 22px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    /* background-color: ; */
+    border: 1px solid var(--secondaryColor);
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container1:hover input~.checkmark {
+    background-color: var(--secondaryColor);
+}
+
+/* When the radio button is checked, add a blue background */
+.container1 input:checked~.checkmark {
+    background-color: var(--secondaryColor);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container1 input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container1 .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+.check {
+    background-color: rgb(243, 112, 33);
+    color: white;
+    border: none;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.05);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.check:hover {
+    background-color: rgb(212, 106, 40);
+
+}

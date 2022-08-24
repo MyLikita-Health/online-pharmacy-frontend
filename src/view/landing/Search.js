@@ -20,12 +20,84 @@ import useQuery from "../../helpers/useQuery";
 // import { CARTLIST } from "../../redux/actions/types";
 import { letterList } from "./component";
 import "./seacrch.css";
+import "./cart/card.css"
+import drug from "./cart/dryug.jpg"
+import drugs from "./cart/dryug.jpg"
+import { useDispatch, useSelector } from "react-redux";
 
 export function ItemCard({ item, display = false }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const cart = useSelector(
+    (state) => state.cart.getCart
+  );
+  const handleSubmit = (items)=>{
+    dispatch({ type: "GETCART", payload: [...cart, items] });
+   
+  }
   return (
     <>
-      <Card style={{ height: "13em" }} className="shadow">
+                          {/* {JSON.stringify(cart)} */}
+  
+            <div class="col-md-3">
+                <div class="block product no-border z-depth-2-top z-depth-2--hover">
+                    <div class="block-image">
+                        <a href="#">
+                            <img   key={item.id}
+                                    src={item.img} class="img-center" onClick={() => navigate(`/store?storeName=${item.store_name}`)} />
+                        </a>
+                        <span class="product-ribbon product-ribbon-right product-ribbon--style-1 bg-blue text-uppercase">New</span>
+                    </div>
+                    <div class="block-body text-center">
+                        <h3 class="heading heading-5 strong-600 text-capitalize">
+                            <a href="#">
+                            {item.itemName}
+                            </a>
+                        </h3>
+                        <p class="product-description">
+                            mg12 pottasium chloride
+                        </p>
+                        <p>₦{formatNumber(item.price)}</p>
+                        <p onClick={() => navigate(`/store?storeName=${item.store_name}`)}
+                style={{ cursor: "pointer" }}
+                className="text-primary">Available at : {item.store_name}</p>
+                        <div class="product-colors mt-2">
+                            <div class="color-switch float-wrapper">
+                                {/* <a href="#" class="bg-purple"></a>
+                                <a href="#" class="bg-pink"></a>
+                                <a href="#" class="bg-blue"></a> */}
+                            </div>
+                        </div>
+                        <div class="product-buttons mt-4">
+                            <div class="row align-items-center">
+                                <div class="col-2">
+                                    <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Favorite">
+                                        <i class="fa fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="col-2">
+                                    <button type="button" class="btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Compare">
+                                        <i class="fa fa-share"></i>
+                                    </button>
+                                </div>
+                                <div class="col-8">
+                                    <button type="button" class="btn btn-block btn-primary btn-circle btn-icon-left" onClick={()=>handleSubmit(item)}>
+                                        <i class="fa fa-shopping-cart"></i>Add to cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+    
+       
+
+
+   
+
+      {/* <Card style={{ height: "13em" }} className="shadow">
         <img
           alt="Card image"
           src="https://picsum.photos/300/200"
@@ -63,7 +135,7 @@ export function ItemCard({ item, display = false }) {
             <Col></Col>
           </Row>
         </CardBody>
-      </Card>
+      </Card> */}
     </>
   );
 }
@@ -95,13 +167,17 @@ export default function Search() {
 
           <div className="ahmad">
             <CustomScrollbar height="75vh">
-              <Row className="p-0 m-0">
+            <div class="container">
+    <div class="shop-default shop-cards shop-tech">
+        <div class="row">
                 {drugList.map((item, i) => (
-                  <Col md={3}>
+              
                     <ItemCard item={item} />
-                  </Col>
+                
                 ))}
-              </Row>
+                 </div>
+    </div>
+</div>
             </CustomScrollbar>
           </div>
         </Col>
