@@ -5,6 +5,7 @@ import {
   // Route, Routes, useRoutes,
   Outlet,
 } from 'react-router-dom'
+import Footer from '../footer'
 // import RecordsIndex from '../../pages/records'
 
 function AuthenticatedContainer() {
@@ -13,6 +14,7 @@ function AuthenticatedContainer() {
       <Navbar />
       <div style={{ height: 52 }} />
       <Outlet />
+      <Footer />
       {/* <Routes>
         
         <Route path="records" element={<RecordsIndex />} />
