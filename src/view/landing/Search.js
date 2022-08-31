@@ -1,15 +1,11 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { ShoppingCart } from "react-feather";
+// import { ShoppingCart } from "react-feather";
 // import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  Card,
-  CardBody,
-  CardSubtitle,
-  CardText,
-  CardTitle,
+ 
   Col,
   Row,
 } from "reactstrap";
@@ -21,8 +17,8 @@ import useQuery from "../../helpers/useQuery";
 import { letterList } from "./component";
 import "./seacrch.css";
 import "./cart/card.css"
-import drug from "./cart/dryug.jpg"
-import drugs from "./cart/dryug.jpg"
+// import drug from "./cart/dryug.jpg"
+// import drugs from "./cart/dryug.jpg"
 import { useDispatch, useSelector } from "react-redux";
 
 export function ItemCard({ item, display = false }) {
@@ -44,7 +40,7 @@ export function ItemCard({ item, display = false }) {
                     <div class="block-image">
                         <a href="#">
                             <img   key={item.id}
-                                    src={item.img} class="img-center" onClick={() => navigate(`/store?storeName=${item.store_name}`)} />
+                                    src={item.img} class="img-center" onClick={() => navigate(`/store?storeName=${item.store_name}`)} alt="drug image" />
                         </a>
                         <span class="product-ribbon product-ribbon-right product-ribbon--style-1 bg-blue text-uppercase">New</span>
                     </div>

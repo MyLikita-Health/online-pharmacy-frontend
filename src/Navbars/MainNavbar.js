@@ -134,21 +134,21 @@ import {
   User,
 } from "react-feather";
 import {
-  Button,
+  // Button,
   Col,
   Dropdown,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  Modal,
-  ModalBody,
+  // Modal,
+  // ModalBody,
   NavItem,
   Row,
 } from "reactstrap";
 import "./nav.css"
 import { useNavigate ,useLocation} from "react-router";
 import { useSelector } from "react-redux";
-import Home from "../view/landing/HomePage";
+// import Home from "../view/landing/HomePage";
 import { Typeahead } from "react-bootstrap-typeahead";
 import { letterList } from "../view/landing/component";
 export default function ShopNavbar() {
@@ -162,8 +162,8 @@ export default function ShopNavbar() {
   };
   const location = useLocation();
   const landingPage = location.pathname === "/";
-  const [modal, setModal] = useState(false);
-  const toggleModal = () => setModal(!modal);
+  // const [modal, setModal] = useState(false);
+  // const toggleModal = () => setModal(!modal);
   const cart = useSelector(
     (state) => state.cart.getCart
   );
@@ -178,6 +178,7 @@ export default function ShopNavbar() {
           <h2>Online Pharmacy</h2>
         </Col>
         <Col md={6} className="col2 text-center">
+          
         {!landingPage &&   <div className="pharmacy--search">
             <div className="pharmacy--searchbar__alignment">
               <div className="search">
@@ -325,6 +326,7 @@ export default function ShopNavbar() {
                   <AuthModal type={auth_type} toggle={toggleModal} setType={setAuthType} />
                 </ModalBody>
             </Modal> */}
+            {itemName}
     </div>
   );
 }
