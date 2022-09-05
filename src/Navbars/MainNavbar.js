@@ -123,7 +123,7 @@
 
 
 
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import {
   Camera,
   ChevronDown,
@@ -149,8 +149,8 @@ import "./nav.css"
 import { useNavigate ,useLocation} from "react-router";
 import { useSelector } from "react-redux";
 // import Home from "../view/landing/HomePage";
-import { Typeahead } from "react-bootstrap-typeahead";
-import { letterList } from "../view/landing/component";
+import { AsyncTypeahead,  } from "react-bootstrap-typeahead";
+// import { letterList } from "../view/landing/component";
 export default function ShopNavbar() {
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -169,7 +169,28 @@ export default function ShopNavbar() {
   );
 
   const navigate = useNavigate();
-  const [itemName, setItemName] = useState("");
+  // const [itemName, setItemName] = useState("");
+  const [results,setResults]=useState([])
+  // const getDrugList = ()=>{
+  //   fetch("http://localhost:34567/drug-list"
+  //   ).then((resp)=>resp.json()).then((data)=>{
+  //     setResults(data.results)
+  //   })
+  // }
+  // useEffect(()=>{
+  //   getDrugList()
+  // },[])
+  const [isLoading,setIsLoading]=useState(false)
+  // const [options,setOptions]=useState([])
+   const handleSearch =(query)=>{
+    setIsLoading(true)
+    fetch(`http://localhost:34567/get-drug-byName?drug_name=${query}`
+    ).then((resp)=>resp.json()).then((data)=>{
+      setResults(data.results)
+    })
+
+   }
+   const filterBy =()=>true;
   // const navigate = useNavigate();
   return (
     <div>
@@ -186,22 +207,50 @@ export default function ShopNavbar() {
               </div>
               <div className="searchbox">
                 <div className="searchbox__alignment">
-                  <Typeahead
+                <AsyncTypeahead
+      filterBy={filterBy}
+      id="async-example"
+      isLoading={isLoading}
+      labelKey="drug_name"
+      minLength={3}
+      onSearch={handleSearch}
+      options={results}
+      placeholder="Search for a Drug..."
+      className="searchtext"
+      inputProps={{
+        // className: "searchtext",
+        style: {
+          border: "0px",
+          outline: "0px",
+          fontSize: "16px",
+          boxShadow: "none",
+          // paddingTop: -30,
+        },
+      }}
+      renderMenuItemChildren={(option: Item) => (
+        <>
+         
+          <span onClick={()=>navigate(`/search?store=${option.drug_name}`)}>{option.drug_name}</span>
+        </>
+      )}
+    />
+                  {/* <Typeahead
                     id="basic-typeahead-single"
-                    labelKey="itemName"
+                    labelKey="drug_name"
                     onInputChange={(e) => {
                       if (e.length) {
-                        setItemName(e[0].itemName);
+                        setItemName(e[0].drug_name);
                       }
                     }}
+                    //SELECT * FROM `pharm_store` WHERE drug_name like '%gtt an%'
                     onChange={(e) => {
                       if (e.length) {
-                        setItemName(e[0].itemName);
-                        navigate(`/search?item_name=${e[0].itemName}`);
+                        setItemName(e[0].drug_name);
+                        navigate(`/search?drug_name=${e[0].drug_name}`);
                       }
                       //  navigate(`/home/re`sult?item_name=${search[0].itemName}`)
                     }}
-                    options={letterList}
+                    options={results}
                     placeholder="Search here..."
                     className="searchtext"
                     maxlength="2048"
@@ -225,7 +274,7 @@ export default function ShopNavbar() {
                         // paddingTop: -30,
                       },
                     }}
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="actions">
@@ -326,7 +375,7 @@ export default function ShopNavbar() {
                   <AuthModal type={auth_type} toggle={toggleModal} setType={setAuthType} />
                 </ModalBody>
             </Modal> */}
-            {itemName}
+            {/* {itemName} */}
     </div>
   );
 }

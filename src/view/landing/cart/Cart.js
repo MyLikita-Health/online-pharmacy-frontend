@@ -3,6 +3,8 @@ import React, { useState } from "react"
 // import "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css";
 import "./cart.css"
 import { useSelector } from "react-redux";
+import drugs from "../cart/dryug.jpg"
+
 export default function Cart() {
   // const productData = [
   //   {
@@ -52,7 +54,7 @@ export default function Cart() {
         if (i === o) {
           return {
             ...data,
-            qty: data.qty + 1,
+            prefix: data.prefix + 1,
           };
         }
         return data;
@@ -65,8 +67,8 @@ export default function Cart() {
     SetProducts((preValue) =>
       preValue.map((data, o) => {
         if (i === o) {
-          if (data.qty > 1) {
-            return { ...data, qty: data.qty - 1 };
+          if (data.prefix > 1) {
+            return { ...data, prefix: data.prefix - 1 };
           } else {
             return data;
           }
@@ -99,7 +101,7 @@ export default function Cart() {
   // ------Total Product Incart and Total Price of cart
   // const cartTotalQty = products.reduce((acc, data) => acc + data.qty, 0);
   const cartTotalAmount = products.reduce(
-    (acc, data) => acc + data.price * data.qty,
+    (acc, data) => acc + data.price * data.prefix,
     0
   );
   return (
@@ -123,7 +125,8 @@ export default function Cart() {
                   <tr>
                     <td>
                       <figure className="itemside align-items-center">
-                        <div className="aside"><img src={i.img} className="img-sm" alt="drug " /></div>
+
+                        <div className="aside"><img src={drugs} className="img-sm" alt="drug " /></div>
                         <figcaption className="info"> <span className="title text-dark" data-abc="true">{i.itemName}</span>
                           <p className="text-muted small">Shop: L <br /> Company: {i.store_name}</p>
                         </figcaption>
@@ -141,7 +144,7 @@ export default function Cart() {
                               type="text"
                               name="qty"
                               className="qty-input-box"
-                              value={i.qty}
+                              value={i.prefix}
                               disabled
                             />
                             <button

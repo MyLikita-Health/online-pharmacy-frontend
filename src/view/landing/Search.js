@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import { ShoppingCart } from "react-feather";
 // import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,11 +14,11 @@ import CustomScrollbar from "../../component/CustomScrollbar";
 import { formatNumber } from "../../helpers";
 import useQuery from "../../helpers/useQuery";
 // import { CARTLIST } from "../../redux/actions/types";
-import { letterList } from "./component";
+// import { letterList } from "./component";
 import "./seacrch.css";
 import "./cart/card.css"
 // import drug from "./cart/dryug.jpg"
-// import drugs from "./cart/dryug.jpg"
+import drugs from "./cart/dryug.jpg"
 import { useDispatch, useSelector } from "react-redux";
 
 export function ItemCard({ item, display = false }) {
@@ -31,32 +31,33 @@ export function ItemCard({ item, display = false }) {
     dispatch({ type: "GETCART", payload: [...cart, items] });
    
   }
+
   return (
     <>
-                          {/* {JSON.stringify(cart)} */}
+                          {/* {JSON.stringify(results)} */}
   
             <div class="col-md-3">
                 <div class="block product no-border z-depth-2-top z-depth-2--hover">
                     <div class="block-image">
                         <a href="#">
                             <img   key={item.id}
-                                    src={item.img} class="img-center" onClick={() => navigate(`/store?storeName=${item.store_name}`)} alt="drug image" />
+                                    src={drugs} class="img-center" onClick={() => navigate(`/store?storeName=${item.branch_name}`)} alt="drug image" />
                         </a>
                         <span class="product-ribbon product-ribbon-right product-ribbon--style-1 bg-blue text-uppercase">New</span>
                     </div>
                     <div class="block-body text-center">
                         <h3 class="heading heading-5 strong-600 text-capitalize">
                             <a href="#">
-                            {item.itemName}
+                            {item.drug_name}
                             </a>
                         </h3>
                         <p class="product-description">
                             mg12 pottasium chloride
                         </p>
-                        <p>₦{formatNumber(item.price)}</p>
-                        <p onClick={() => navigate(`/store?storeName=${item.store_name}`)}
+                        <p>₦{formatNumber(item.selling_price)}</p>
+                        <p onClick={() => navigate(`/store?store=${item.store}`)}
                 style={{ cursor: "pointer" }}
-                className="text-primary">Available at : {item.store_name}</p>
+                className="text-primary">Available at : {item.store}</p>
                         <div class="product-colors mt-2">
                             <div class="color-switch float-wrapper">
                                 {/* <a href="#" class="bg-purple"></a>
@@ -99,7 +100,7 @@ export function ItemCard({ item, display = false }) {
           src="https://picsum.photos/300/200"
           className="img-fluid"
           style={{ cursor: "pointer" }}
-          onClick={() => navigate(`/store?storeName=${item.store_name}`)}
+          onClick={() => navigate(`/store?storeName=${item.branch_name}`)}
         />
         <CardBody>
           <Row>
@@ -121,11 +122,11 @@ export function ItemCard({ item, display = false }) {
               </CardSubtitle>
               <CardText
                 tag="h5"
-                onClick={() => navigate(`/store?storeName=${item.store_name}`)}
+                onClick={() => navigate(`/store?storeName=${item.branch_name}`)}
                 style={{ cursor: "pointer" }}
                 className="text-primary"
               >
-                Available at : {item.store_name}
+                Available at : {item.branch_name}
               </CardText>
             </Col>
             <Col></Col>
@@ -137,8 +138,18 @@ export function ItemCard({ item, display = false }) {
 }
 export default function Search() {
   const query = useQuery();
-  const item_name = query.get("item_name");
-  const drugList = letterList.filter((i) => i.itemName === item_name);
+  const [results,setResults]=useState([])
+  const getDrugList = ()=>{
+    fetch("http://localhost:34567/drug-list"
+    ).then((resp)=>resp.json()).then((data)=>{
+      setResults(data.results)
+    })
+  }
+  useEffect(()=>{
+    getDrugList()
+  },[])
+  const drug_name = query.get("store");
+  const drugList = results.filter((i) => i.drug_name === drug_name);
   // const [select, setSelect] = useState([]);
   // const dispatch = useDispatch();
   // const addToCart = (item) => {
@@ -147,6 +158,7 @@ export default function Search() {
   //     payload: item,
   //   });
   // };
+  
   return (
     <div>
       {/* <div className='underline'></div> */}

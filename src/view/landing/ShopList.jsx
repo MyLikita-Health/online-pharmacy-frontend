@@ -1,17 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "reactstrap";
 import CustomScrollbar from "../../component/CustomScrollbar";
 import useQuery from "../../helpers/useQuery";
-import { letterList } from "./component";
+// import { letterList } from "./component";
 import { ItemCard } from "./Search";
 
 export default function ShopList() {
+  const [results,setResults]=useState([])
+  const getDrugList = ()=>{
+    fetch("http://localhost:34567/drug-list"
+    ).then((resp)=>resp.json()).then((data)=>{
+      setResults(data.results)
+      console.log("ddddddddddd",data.results)
+   })
+  }
+  useEffect(()=>{
+    getDrugList()
+  },[])
   const query = useQuery();
-  const store_name = query.get("storeName");
-  const shoplist = letterList.filter((i) => i.store_name === store_name);
+  const store = query.get("store");
+  const shoplist = results.filter((i) => i.store === store);
   useEffect(() => {
-    document.title = store_name;
-  }, [store_name]);
+    document.title = store;
+  }, [store]);
+
 
   return (
     <div>
@@ -20,7 +32,7 @@ export default function ShopList() {
         <Col md={1}></Col>
         <Col md={10}>
           <center>
-            <h1 className="result">{store_name}</h1>
+            <h1 className="result">{store}</h1>
           </center>
 
           <div className="ahmad">
