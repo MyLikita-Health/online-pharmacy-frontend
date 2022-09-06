@@ -11,7 +11,7 @@ const [loading,setLoading]=useState(false)
   const [results,setResults]=useState([])
   const getDrugList = ()=>{
     setLoading(true);
-    fetch("http://localhost:34567/drug-list"
+    fetch("https://yge.wvi.mybluehost.me/test/online-pharmacy-backend/drug-list"
     ).then((resp)=>resp.json()).then((data)=>{
       setResults(data.results)
       console.log("ddddddddddd",data.results)

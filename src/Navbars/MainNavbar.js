@@ -184,7 +184,7 @@ export default function ShopNavbar() {
   // const [options,setOptions]=useState([])
    const handleSearch =(query)=>{
     setIsLoading(true)
-    fetch(`http://localhost:34567/get-drug-byName?drug_name=${query}`
+    fetch(`https://yge.wvi.mybluehost.me/test/online-pharmacy-backend/get-drug-byName?drug_name=${query}`
     ).then((resp)=>resp.json()).then((data)=>{
       setResults(data.results)
     })
