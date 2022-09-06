@@ -7,14 +7,24 @@ import { Camera, Mic, Search } from "react-feather";
 import "./search.css";
 import { useState } from "react";
 // import Home3 from "./Home3";
-import { Typeahead } from "react-bootstrap-typeahead";
+import { AsyncTypeahead, Typeahead } from "react-bootstrap-typeahead";
 import { letterList } from "./component";
 import { useNavigate } from "react-router-dom";
 
 export default function Home({ display = false }) {
   const [itemName, setItemName] = useState("");
   const navigate = useNavigate();
+  const [isLoading,setIsLoading]=useState(false)
+  const [results,setResults]=useState([])
+   const handleSearch =(query)=>{
+    setIsLoading(true)
+    fetch(`http://localhost:34567/get-drug-byName?drug_name=${query}`
+    ).then((resp)=>resp.json()).then((data)=>{
+      setResults(data.results)
+    })
 
+   }
+   const filterBy =()=>true;
   return (
     <>
       {/* {JSON.stringify(itemName)} */}
@@ -28,46 +38,33 @@ export default function Home({ display = false }) {
               </div>
               <div className="searchbox">
                 <div className="searchbox__alignment">
-                  <Typeahead
-                    id="basic-typeahead-single"
-                    labelKey="itemName"
-                    onInputChange={(e) => {
-                      if (e.length) {
-                        setItemName(e[0].itemName);
-                      }
-                    }}
-                    onChange={(e) => {
-                      if (e.length) {
-                        setItemName(e[0].itemName);
-                        navigate(`/search?item_name=${e[0].itemName}`);
-                      }
-                      //  navigate(`/home/re`sult?item_name=${search[0].itemName}`)
-                    }}
-                    options={letterList}
-                    placeholder="Search here..."
-                    className="searchtext"
-                    maxlength="2048"
-                    aria-autocomplete="both"
-                    aria-haspopup="false"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autofocus=""
-                    role="combobox"
-                    spellcheck="false"
-                    title="Search"
-                    aria-label="Search"
-                    inputProps={{
-                      // className: "searchtext",
-                      style: {
-                        border: "0px",
-                        outline: "0px",
-                        fontSize: "16px",
-                        boxShadow: "none",
-                        // paddingTop: -30,
-                      },
-                    }}
-                  />
+                <AsyncTypeahead
+      filterBy={filterBy}
+      id="async-example"
+      isLoading={isLoading}
+      labelKey="drug_name"
+      minLength={3}
+      onSearch={handleSearch}
+      options={results}
+      placeholder="Search for a Drug..."
+      className="searchtext"
+      inputProps={{
+        // className: "searchtext",
+        style: {
+          border: "0px",
+          outline: "0px",
+          fontSize: "16px",
+          boxShadow: "none",
+          // paddingTop: -30,
+        },
+      }}
+      renderMenuItemChildren={(option: Item) => (
+        <>
+         
+          <span onClick={()=>navigate(`/search?store=${option.drug_name}`)}>{option.drug_name}</span>
+        </>
+      )}
+    />
                 </div>
               </div>
               <div className="actions">

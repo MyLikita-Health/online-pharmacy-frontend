@@ -1,18 +1,26 @@
+// import { FOCUSAB-library/user-event/dist/utils";
 import React, { useEffect, useState } from "react";
-import { Col, Row } from "reactstrap";
+import { Col, Row, Spinner } from "reactstrap";
 import CustomScrollbar from "../../component/CustomScrollbar";
 import useQuery from "../../helpers/useQuery";
 // import { letterList } from "./component";
 import { ItemCard } from "./Search";
 
 export default function ShopList() {
+const [loading,setLoading]=useState(false)
   const [results,setResults]=useState([])
   const getDrugList = ()=>{
+    setLoading(true);
     fetch("http://localhost:34567/drug-list"
     ).then((resp)=>resp.json()).then((data)=>{
       setResults(data.results)
       console.log("ddddddddddd",data.results)
+      setLoading(false);
    })
+   .catch((err) => {
+    setLoading(false);
+    console.log(err);
+  });
   }
   useEffect(()=>{
     getDrugList()
@@ -35,6 +43,18 @@ export default function ShopList() {
             <h1 className="result">{store}</h1>
           </center>
 
+            <center>
+          {loading && (
+                <Spinner
+                color="primary"
+                style={{
+                  height: '3rem',
+                  width: '3rem'
+                }}
+              >
+                Loading...
+              </Spinner>
+              )}</center>
           <div className="ahmad">
             <CustomScrollbar height="75vh">
               <Row className="p-0 m-0">

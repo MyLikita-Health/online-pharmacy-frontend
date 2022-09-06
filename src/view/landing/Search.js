@@ -8,6 +8,7 @@ import {
  
   Col,
   Row,
+  Spinner,
 } from "reactstrap";
 // import BackButton from "../../component/BackButton";
 import CustomScrollbar from "../../component/CustomScrollbar";
@@ -43,7 +44,7 @@ export function ItemCard({ item, display = false }) {
                             <img   key={item.id}
                                     src={drugs} class="img-center" onClick={() => navigate(`/store?storeName=${item.branch_name}`)} alt="drug image" />
                         </a>
-                        <span class="product-ribbon product-ribbon-right product-ribbon--style-1 bg-blue text-uppercase">New</span>
+                        {/* <span class="product-ribbon product-ribbon-right product-ribbon--style-1 bg-blue text-uppercase">New</span> */}
                     </div>
                     <div class="block-body text-center">
                         <h3 class="heading heading-5 strong-600 text-capitalize">
@@ -137,13 +138,19 @@ export function ItemCard({ item, display = false }) {
   );
 }
 export default function Search() {
+  const [loading,setLoading]=useState(false)
   const query = useQuery();
   const [results,setResults]=useState([])
   const getDrugList = ()=>{
+    setLoading(true);
     fetch("http://localhost:34567/drug-list"
     ).then((resp)=>resp.json()).then((data)=>{
       setResults(data.results)
-    })
+      setLoading(false);
+    }).catch((err) => {
+      setLoading(false);
+      console.log(err);
+    });
   }
   useEffect(()=>{
     getDrugList()
@@ -162,17 +169,32 @@ export default function Search() {
   return (
     <div>
       {/* <div className='underline'></div> */}
+      
+         
       <div className="d-flex justify-content-between">
         {/* <BackButton color="primary" /> */}
       </div>
       <Row className="p-0 m-0">
         {/* {JSON.stringify(item_name)} */}
+        
         <Col md={1}></Col>
         <Col md={10}>
           <center>
             <h1 className="result">Your Search Result</h1>
+            {loading && (
+                <Spinner
+                color="primary"
+                style={{
+                  height: '3rem',
+                  width: '3rem'
+                }}
+              >
+                Loading...
+              </Spinner>
+              )}
           </center>
 
+          
           <div className="ahmad">
             <CustomScrollbar height="75vh">
             <div class="container">
