@@ -7,8 +7,8 @@ import { Camera, Mic, Search } from "react-feather";
 import "./search.css";
 import { useState } from "react";
 // import Home3 from "./Home3";
-import { AsyncTypeahead, Typeahead } from "react-bootstrap-typeahead";
-import { letterList } from "./component";
+import { AsyncTypeahead,  } from "react-bootstrap-typeahead";
+// import { letterList } from "./component";
 import { useNavigate } from "react-router-dom";
 
 export default function Home({ display = false }) {
@@ -22,7 +22,8 @@ export default function Home({ display = false }) {
     ).then((resp)=>resp.json()).then((data)=>{
       setResults(data.results)
     })
-
+   
+    
    }
    const filterBy =()=>true;
   return (
@@ -91,7 +92,7 @@ export default function Home({ display = false }) {
               >
                 Pharm Search
               </button>
-              <button>I'm Feeling Lucky</button>
+              <button onClick={()=>setItemName()}>I'm Feeling Lucky</button>
             </div>
           )}
         </form>
